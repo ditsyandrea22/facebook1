@@ -68,6 +68,27 @@ Buka bot di Telegram, kirim `/start`, lalu `/berita`.
 
 ---
 
+## ☁️ Deploy ke Railway (always-on)
+
+Bot ini memakai **long polling**, jadi butuh host yang menyala 24/7 (Railway cocok —
+**bukan** Vercel/Netlify yang serverless & tidak bisa menjalankan proses polling terus-menerus).
+
+1. Push proyek ini ke GitHub (pastikan `.env` **tidak** ikut — sudah diatur di `.gitignore`).
+2. Di [railway.app](https://railway.app): **New Project → Deploy from GitHub repo** → pilih repo ini.
+3. Buka tab **Variables**, tambahkan variabel (nilai diambil dari `.env` lokalmu):
+   - `ANTHROPIC_AUTH_TOKEN`
+   - `ANTHROPIC_BASE_URL` = `https://gorouter.app`
+   - `ANTHROPIC_MODEL` = `claude-opus-4-8`
+   - `TELEGRAM_BOT_TOKEN`
+   - `POST_LANG` = `id`
+4. Railway otomatis membaca `railway.json` / `Procfile` dan menjalankan `python bot.py`.
+5. (Opsional, agar feedback 👍/👎 tidak hilang saat redeploy) tambahkan **Volume**,
+   mount di `/data`, lalu set variabel `DATA_DIR=/data`.
+
+> Tanpa Volume, file `feedback.json` bersifat sementara dan akan ter-reset setiap redeploy.
+
+---
+
 ## 📁 Struktur Proyek
 
 | File | Peran |
@@ -80,6 +101,8 @@ Buka bot di Telegram, kirim `/start`, lalu `/berita`.
 | `.env` | Konfigurasi & rahasia (tidak di-commit) |
 | `.env.example` | Template konfigurasi tanpa rahasia |
 | `feedback.json` | Data feedback (dibuat otomatis saat runtime) |
+| `Procfile` / `railway.json` | Konfigurasi deploy Railway (`python bot.py`) |
+| `.python-version` | Versi Python untuk build Railway |
 
 ---
 

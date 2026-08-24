@@ -3,7 +3,9 @@ import json
 import os
 import time
 
-_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback.json")
+# DATA_DIR bisa diarahkan ke Railway Volume (mis. /data) agar feedback tak hilang saat redeploy.
+_DATA_DIR = os.getenv("DATA_DIR") or os.path.dirname(os.path.abspath(__file__))
+_PATH = os.path.join(_DATA_DIR, "feedback.json")
 MAX_STORE = 50        # batasi ukuran file
 MAX_LIKED_EX = 3      # jumlah contoh disukai yang diinjeksikan ke prompt
 MAX_DISLIKED_EX = 2   # jumlah contoh dihindari
@@ -25,6 +27,7 @@ def _load():
 def _save(d):
     d["liked"] = d["liked"][-MAX_STORE:]
     d["disliked"] = d["disliked"][-MAX_STORE:]
+    os.makedirs(os.path.dirname(_PATH) or ".", exist_ok=True)
     with open(_PATH, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=2)
 
