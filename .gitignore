@@ -30,6 +30,9 @@ ENV/
 .ruff_cache/
 .ipynb_checkpoints/
 
+#identity
+identity.pem
+
 # ==== IDE / OS ====
 .vscode/
 .idea/
