@@ -127,3 +127,8 @@ membuat output makin konsisten dengan selera audiensmu.
   (mis. funding rate terblokir di jaringan tertentu), bagian itu otomatis dilewati tanpa
   membuat bot error.
 - Rate limit CoinGecko gratis terbatas; hindari memanggil `/berita` terlalu sering beruntun.
+
+## prof
+
+repo ini berkontribusi $FLOP https://x.com/flop_labs
+my did did:key:z6MkubCt2oGvpwa2d144GxaF6b7TYafy8CXyY1xurq81sf35
