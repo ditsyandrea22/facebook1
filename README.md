@@ -131,4 +131,4 @@ membuat output makin konsisten dengan selera audiensmu.
 ## prof
 
 repo ini berkontribusi $FLOP https://x.com/flop_labs
-my did did:key:z6MkubCt2oGvpwa2d144GxaF6b7TYafy8CXyY1xurq81sf35
+my did:key:z6MkubCt2oGvpwa2d144GxaF6b7TYafy8CXyY1xurq81sf35
